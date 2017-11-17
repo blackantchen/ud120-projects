@@ -36,11 +36,15 @@ print "training time:", round(time()-t0,3),"s"
 
 t0 = time()
 # use new Classifier to class test datasets
-test_classed = clf.predict(features_test)
+pred = clf.predict(features_test)
 print "predict time:", round(time()-t0,3),"s"
 
 # show the precision
-expect_y = labels_test
-print(metrics.classification_report(expect_y, test_classed, target_names={'chris','sara'}))
+#show the precision of new Classifier
+print "naive-bayes accuracy:"
+print(metrics.accuracy_score(labels_test, pred))
+
+# expect_y = labels_test
+# print(metrics.classification_report(expect_y, test_classed, target_names={'chris','sara'}))
 
 #########################################################
