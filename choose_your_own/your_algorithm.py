@@ -28,15 +28,27 @@ plt.show()
 ################################################################################
 
 
-### your code here!  name your classifier object clf if you want the 
+### your code here!  name your classifier object clf if you want the
 ### visualization code (prettyPicture) to show you the decision boundary
 
+# Adaboost classifier
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import AdaBoostClassifier
+
+def createAndFit_AdaBoostClassifier():
+    bdt = AdaBoostClassifier(n_estimators = 100)
+    bdt = bdt.fit(features_train, labels_train)
+
+    return bdt
 
 
+t0 = time()
+clf = createAndFit_AdaBoostClassifier()
+print"training time:", round(time()-t0, 6),"s"
 
-
-
-
+t0 = time()
+pred = clf.predict(features_test, labels_test)
+print"predict time:", round(time()-t0, 6),"s"
 
 try:
     prettyPicture(clf, features_test, labels_test)
