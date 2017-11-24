@@ -57,6 +57,7 @@ print"predict time:", round(time()-t0, 6),"s"
 acc_adaboost = metrics.accuracy_score(labels_test, pred)
 print"accuracy is ", acc_adaboost
 
+
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
