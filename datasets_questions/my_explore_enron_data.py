@@ -17,11 +17,10 @@
 
 import pickle
 
-#enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
+enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-pkl_file = (open("../final_project/final_project_dataset.pkl", "r"))
-
-enron_data = pickle.load(pkl_file)
+# pkl_file = (open("../final_project/final_project_dataset.pkl", "r"))
+# enron_data = pickle.load(pkl_file)
 
 #print "Key list:\n", enron_data.keys()
 
@@ -55,4 +54,41 @@ for k in ['LAY KENNETH L','SKILLING JEFFREY K','FASTOW ANDREW S']:
 print "Of Lay, Skilling and Fastow, who took home most money?"
 print"It is", name_of_max_pay, ", he took", max_payments, "to home"
 
-#Q27: 
+#Q27:
+def check_how_many_person_have_quantified_sarlay():
+    cnt_quantified_salary = 0
+    cnt_email_addr = 0
+    for k in enron_data.keys():
+        if enron_data[k]['salary'] != 'NaN':
+            cnt_quantified_salary += 1
+
+        if enron_data[k]['email_address'] != 'NaN':
+            cnt_email_addr += 1
+
+    print "How many folks have quantified salary?", cnt_quantified_salary
+    print "How many person have avoid email address?", cnt_email_addr
+
+def check_what_percentage_of_people_their_total_payment_is_NaN():
+    cnt_total_payment = 0
+    for k in enron_data.keys():
+        if enron_data[k]['total_payments'] == 'NaN':
+            cnt_total_payment += 1
+
+    percent_NaN = float(cnt_total_payment)/len(enron_data)
+
+    print "\nwhat_percentage_of_people_their_total_payment_is_NaN ?"
+    print "total:", cnt_total_payment, "percentage:", percent_NaN
+
+def check_what_percentage_of_POI_have_NaN_for_their_total_payments():
+    cnt_poi = 0
+    cnt_NaN_of_poi = 0
+    for k in enron_data.keys():
+        if enron_data[k]['poi'] == True:
+            cnt_poi += 1
+            if enron_data[k]['total_payments'] == 'NaN':
+                cnt_NaN_of_poi += 1
+    percent_NaN = float(cnt_NaN_of_poi)/cnt_poi
+    print "\nThere are %d POIs in dataset", cnt_poi
+    print "percentage of POIs have 'NaN'", percent_NaN
+
+check_what_percentage_of_POI_have_NaN_for_their_total_payments()
