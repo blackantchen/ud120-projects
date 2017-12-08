@@ -32,9 +32,9 @@ def outlierCleaner(predictions, ages, net_worths):
     # print 'new data:', datalist
     # print 'sorted list', sorted_list
 
-    new_len = len(sorted_list)*0.9
+    new_len = int(len(sorted_list)*0.9)
 
-    cleaned_data = sorted_list[:81]
+    cleaned_data = sorted_list[:new_len]
     # print cleaned_data
     # print 'length of cleaned_data:', len(cleaned_data)
 
