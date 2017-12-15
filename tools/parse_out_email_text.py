@@ -40,7 +40,7 @@ def parseOutText(f):
         ### if two whitespace between words, it just give one whitespace
         ### using default parameter, it will give up all whitespace that between words
         split_words = text_string.split()
-        print "split_words:", split_words
+        # print "split_words:", split_words
 
         stemmed_str = []
         for w in split_words:
@@ -49,7 +49,7 @@ def parseOutText(f):
                 stemmed_str.append(stemmed_w)
                 stemmed_str.append(" ")
 
-        print "stemmed_str:", stemmed_str
+        # print "stemmed_str:", stemmed_str
 
         words = "".join(stemmed_str)
 
