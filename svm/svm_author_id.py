@@ -69,7 +69,7 @@ def svm_clf_with_miniTrainDataSet():
     print "svm-linear accuracy:"
     print(metrics.accuracy_score(labels_test,pred_result))
 
-def svm_clf_rbf():
+def svm_clf_rbf(para_c):
     features_train_min = features_train
     labels_train_min = labels_train
     # features_train_min = features_train[:len(features_train)/100]
@@ -78,7 +78,7 @@ def svm_clf_rbf():
     print "features_train len:",len(features_train_min),"labels_train len:",len(labels_train_min)
 
     # Create Classifier model
-    para_c = 10000.
+    #para_c = 10000.
     clf = svm.SVC(kernel="rbf", C=para_c)
     print "SVC para c = ", para_c
 

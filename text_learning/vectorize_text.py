@@ -53,7 +53,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
         ### use str.replace() to remove any instances of the words
         ### ["sara", "shackleton", "chris", "germani"]
-        for w in ["sara", "shackleton", "chris", "germani"]:
+        ### add "sshacklensf" to need-remove-feature-list for lession-12 "feature select"
+        for w in ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]:
             email_text = email_text.replace(w, "") ### 必须将str.replace()的结果赋值给email_text,否则str不会改变
 
         ### append the text to word_data

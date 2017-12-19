@@ -8,7 +8,7 @@ numpy.random.seed(42)
 ### The words (features) and authors (labels), already largely processed.
 ### These files should have been created from the previous (Lesson 10)
 ### mini-project.
-words_file = "../text_learning/your_word_data.pkl" 
+words_file = "../text_learning/your_word_data.pkl"
 authors_file = "../text_learning/your_email_authors.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
@@ -38,6 +38,33 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+from sklearn import tree
+from sklearn import metrics
 
+# create classifier
+clf = tree.DecisionTreeClassifier(min_samples_split = 40)
 
+print "number of train data points:", len(features_train)
+clf = clf.fit(features_train, labels_train)
 
+test_pred = clf.predict(features_test)
+
+accuracy_test = metrics.accuracy_score(labels_test, test_pred)
+print "accuracy_score of test datasets:", accuracy_test
+
+f_id = 0
+most_w = 0
+most_f_id = 0
+feature_names_list = vectorizer.get_feature_names()
+
+for w in clf.feature_importances_:
+    if w > 0.2:
+        print "feature weight:", w, "index:", f_id, "name:", feature_names_list[f_id]
+        if w > most_w:
+            most_w = w
+            most_f_id = f_id
+
+    f_id += 1
+
+print "the most import feature is:", most_w, "Num:", most_f_id
+print "Name of the most import feature:", feature_names_list[most_f_id]
